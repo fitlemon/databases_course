@@ -34,17 +34,18 @@
 
 Применим агрегатные функции к окнам в разрезе дат:
 
+```
 SELECT Date, Medium, Conversions,
 SUM(Conversions) OVER(PARTITION BY Date) AS 'Sum', COUNT(Conversions) OVER(PARTITION BY Date) AS 'Count', AVG(Conversions) OVER(PARTITION BY Date) AS 'Avg',
 MAX(Conversions) OVER(PARTITION BY Date) AS 'Max',
 MIN(Conversions) OVER(PARTITION BY Date) AS 'Min'
 FROM Orders
+```
 
 В результате к исходной таблице добавились столбцы с расчетом агрегатных функций.
 
 ![](../static/img/module_3_9.png)
 
-В практической части видеолекции можно посмотреть пример работы с агрегатными функциями.
 
 * * * * *
 

@@ -32,11 +32,13 @@
 
 Сделаем запрос с использованием ранжирующих функций в разрезе дат:
 
+```
 SELECT Date, Medium, Conversions, ROW_NUMBER() OVER(PARTITION BY Date
 ORDER BY Conversions) AS 'Row_number',
 RANK() OVER(PARTITION BY Date ORDER BY Conversions) AS 'Rank' , DENSE_RANK() OVER(PARTITION BY Date ORDER BY Conversions) AS 'Dense_Rank' ,
 NTILE(3) OVER(PARTITION BY Date ORDER BY Conversions) AS 'Ntile'
 FROM Orders
+```
 
 В результате получаем такую таблицу:
 
